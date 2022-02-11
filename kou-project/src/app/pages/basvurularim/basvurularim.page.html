@@ -1,0 +1,260 @@
+<ion-header >
+  <ion-toolbar style="--background:#f04e84">
+    <ion-button (click)="back()" style="--background:#f04e84;--box-shadow:0px;--padding-start:5px;--padding-end:0">
+      <ion-icon name="arrow-back-outline" style="font-size: 24px;"></ion-icon>
+      <ion-title style="font-size: 18px;font-family: Verdana, Geneva, Tahoma, sans-serif;padding:10px 10px 10px 15px;">Başvurularım</ion-title>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class= "card-page" [fullscreen]="true">
+
+  <div *ngFor="let item of userService.basvurularim">
+    <ion-card *ngIf="item.basvuruTipi==='yaz'" >
+      <ion-card-header style="background-color: #428bca; height: 15px;">
+        <ion-label style="color: white; font-size: 18px; top: 10px; left: 15px; position: absolute;">Yaz Okulu Başvurusu</ion-label>
+       </ion-card-header>
+       <ion-card-content>
+        <div class="list">
+          <ion-grid>
+            <ion-row class="information">
+             <ion-img style="width: 18px; height: 20px;" src="assets/user.png"></ion-img>
+             <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+            {{userService.userData.name}}
+             </ion-label>
+            </ion-row>
+          <ion-row class="information">
+            <ion-img style="width: 18px; height: 20px;"src="assets/calendar.png"></ion-img>
+            <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+            
+            {{item.tarih}}
+            </ion-label>
+          </ion-row>
+            <ion-row *ngFor="let data of item.basvurular" class="information">
+              <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+              <ion-label style="margin-left: 5px; margin-top: 2px;">
+                <p style="font-size: 12px;">{{data.fakulte}} / {{data.bolum}}</p>
+              </ion-label>
+            </ion-row>
+            <div *ngFor="let ders of item.basvurular.dersler"  style="margin-left: 5px;">
+              <p style="font-size: 10px;">-{{ders}}</p>
+              <!-- <p style="font-size: 10px;">-Programlama Laboratuvarı</p>
+              <p style="font-size: 10px;">-Veritabanı Laboratuvarı</p> -->
+            </div>
+            </ion-grid>
+        </div>
+       </ion-card-content>
+       <div style="margin-bottom: 20px;"></div>
+       <div style="color:black; right: 0px; bottom: 0px; position: absolute;">
+        <ion-button *ngIf="item.durum=='onaylandi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(4, 206, 4);">ONAYLANDI<ion-img style="width: 40%; height: 40%; margin-left: 5px; margin-bottom: 3px;" src="assets/check.png"></ion-img></ion-button>
+        <ion-button *ngIf="item.durum=='reddedildi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(255, 0, 0);">REDDEDILDI<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/close.png"></ion-img></ion-button>
+        <ion-button *ngIf="item.durum=='beklemede'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: black;">BEKLEMEDE<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/clock.png"></ion-img></ion-button>
+      </div>
+   </ion-card>
+   
+
+      <ion-card *ngIf="item.basvuruTipi=='yatay'">
+        <ion-card-header style="background-color: #5cb85c; height: 15px;">
+          <ion-label style="color: white; font-size: 18px; top: 10px; left: 15px; position: absolute;">Yatay Geçiş Başvurusu</ion-label>
+         </ion-card-header>
+         <ion-card-content>
+          <div class="list">
+            <ion-grid>
+              <ion-row class="information">
+               <ion-img style="width: 18px; height: 20px;" src="assets/user.png"></ion-img>
+               <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+                {{userService.userData.name}}
+               </ion-label>
+              </ion-row>
+            <ion-row class="information">
+              <ion-img style="width: 18px; height: 20px;"src="assets/calendar.png"></ion-img>
+              <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+              
+                {{item.tarih}}
+              </ion-label>
+            </ion-row>
+             <ion-row class="information">
+               <ion-img style="width: 18px; height: 20px;" src="assets/choices.png"></ion-img>
+               <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+               
+                 Başvuru Tipi:
+               </ion-label>
+               <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+               
+                Merkezi Yerleştirme
+              </ion-label>
+             </ion-row>
+              <ion-row *ngFor="let data of item.basvurular" class="information">
+                <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+                <ion-label style="margin-left: 5px; margin-top: 2px;">
+                  <p style="font-style: inherit; font-size: 12px;">{{data.fakulte}} / {{data.bolum}} </p>
+                </ion-label>
+              </ion-row>
+              <!-- <ion-row class="information">
+                <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+                <ion-label style="margin-left: 5px; margin-top: 2px;">
+                  <p style="font-style: inherit; font-size: 12px;">Teknoloji Fakültesi / Biyomedikal Mühendisliği</p>
+                </ion-label>
+              </ion-row>
+              <ion-row class="information">
+                <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+                <ion-label style="margin-left: 5px; margin-top: 2px;">
+                  <p style="font-style: inherit; font-size: 12px;">Mühendislik Fakültesi / Bilgisayar Mühendisliği</p>
+                </ion-label>
+              </ion-row>
+              <ion-row class="information">
+                <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+                <ion-label style="margin-left: 5px; margin-top: 2px;">
+                  <p style="font-style: inherit; font-size: 12px;">Hukuk Fakültesi / Kamu Hukuku</p>
+                </ion-label>
+              </ion-row> -->
+              </ion-grid>
+          </div>
+         </ion-card-content>
+         <div style="margin-bottom: 20px;"></div>
+         <div style="color:black; right: 0px; bottom: 0px; position: absolute;">
+          <ion-button *ngIf="item.durum=='onaylandi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(4, 206, 4);">ONAYLANDI<ion-img style="width: 40%; height: 40%; margin-left: 5px; margin-bottom: 3px;" src="assets/check.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='reddedildi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(255, 0, 0);">REDDEDILDI<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/close.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='beklemede'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: black;">BEKLEMEDE<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/clock.png"></ion-img></ion-button>
+        </div>
+      </ion-card>
+
+      <ion-card *ngIf="item.basvuruTipi=='dikey'">
+        <ion-card-header style="background-color: #f0ad4e; height: 15px;">
+          <ion-label style="color: white; font-size: 18px; top: 10px; left: 15px; position: absolute;">DGS Başvurusu</ion-label>
+         </ion-card-header>
+         <ion-card-content>
+          <div class="list">
+            <ion-grid>
+              <ion-row class="information">
+               <ion-img style="width: 18px; height: 20px;" src="assets/user.png"></ion-img>
+               <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+                {{userService.userData.name}}
+              
+               </ion-label>
+              </ion-row>
+            <ion-row class="information">
+              <ion-img style="width: 18px; height: 20px;"src="assets/calendar.png"></ion-img>
+              <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+                {{item.tarih}}
+
+              </ion-label>
+            </ion-row>
+            <ion-row *ngFor="let data of item.basvurular" class="information">
+              <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+              <ion-label style="margin-left: 5px; margin-top: 2px;">
+                <p style="font-style: inherit; font-size: 12px;">{{data.fakulte}} / {{data.bolum}}</p>
+              </ion-label>
+            </ion-row>
+              </ion-grid>
+          </div>
+         </ion-card-content>
+         <div style="margin-bottom: 20px;"></div>
+         <div style="color:black; right: 0px; bottom: 0px; position: absolute;">
+          <ion-button *ngIf="item.durum=='onaylandi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(4, 206, 4);">ONAYLANDI<ion-img style="width: 40%; height: 40%; margin-left: 5px; margin-bottom: 3px;" src="assets/check.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='reddedildi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(255, 0, 0);">REDDEDILDI<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/close.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='beklemede'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: black;">BEKLEMEDE<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/clock.png"></ion-img></ion-button>
+        </div>
+     </ion-card>
+
+     <ion-card *ngIf="item.basvuruTipi=='cap'">
+      <ion-card-header style="background-color: #d9534f; height: 15px;">
+        <ion-label style="color: white; font-size: 18px; top: 10px; left: 15px; position: absolute;">ÇAP Başvurusu</ion-label>
+       </ion-card-header>
+       <ion-card-content>
+        <div class="list">
+          <ion-grid>
+            <ion-row class="information">
+             <ion-img style="width: 18px; height: 20px;" src="assets/user.png"></ion-img>
+             <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+            
+              {{userService.userData.name}}
+
+             </ion-label>
+            </ion-row>
+          <ion-row class="information">
+            <ion-img style="width: 18px; height: 20px;"src="assets/calendar.png"></ion-img>
+            <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+            
+              {{item.tarih}}
+
+            </ion-label>
+          </ion-row>
+          <ion-row class="information">
+            <ion-img style="width: 18px; height: 20px;"src="assets/writing.png"></ion-img>
+            <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+            
+              {{item.ortalama}}
+            </ion-label>
+          </ion-row>
+            <ion-row *ngFor="let data of item.basvurular" class="information">
+              <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+              <ion-label style="margin-left: 5px; margin-top: 2px;">
+                <p style="font-size: 12px;">{{data.fakulte}} / {{data.bolum}}</p>
+              </ion-label>
+            </ion-row>
+            <div *ngFor="let ders of item.basvurular.dersler" style="margin-left: 5px;">
+              <p style="font-size: 10px;">-{{ders}}</p>
+              <!-- <p style="font-size: 10px;">-Programlama Laboratuvarı</p>
+              <p style="font-size: 10px;">-Veritabanı Laboratuvarı</p> -->
+            </div>
+            </ion-grid>
+        </div>
+       </ion-card-content>
+       <div style="margin-bottom: 20px;"></div>
+       <div style="color:black; right: 0px; bottom: 0px; position: absolute;">
+        <ion-button *ngIf="item.durum=='onaylandi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(4, 206, 4);">ONAYLANDI<ion-img style="width: 40%; height: 40%; margin-left: 5px; margin-bottom: 3px;" src="assets/check.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='reddedildi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(255, 0, 0);">REDDEDILDI<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/close.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='beklemede'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: black;">BEKLEMEDE<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/clock.png"></ion-img></ion-button>
+      </div>
+   </ion-card>
+
+   <ion-card *ngIf="item.basvuruTipi=='intibak'">
+    <ion-card-header style="background-color: #ad4ed9; height: 15px;">
+      <ion-label style="color: white; font-size: 18px; top: 10px; left: 15px; position: absolute;">Ders İntibakı Başvurusu</ion-label>
+     </ion-card-header>
+     <ion-card-content>
+      <div class="list">
+        <ion-grid>
+          <ion-row class="information">
+           <ion-img style="width: 18px; height: 20px;" src="assets/user.png"></ion-img>
+           <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+          
+            {{userService.userData.name}}
+
+           </ion-label>
+          </ion-row>
+        <ion-row class="information">
+          <ion-img style="width: 18px; height: 20px;"src="assets/calendar.png"></ion-img>
+          <ion-label style="font-size: 12px;  margin-left: 5px; margin-top: 2px;">
+          
+            {{item.tarih}}
+
+          </ion-label>
+        </ion-row>
+          <ion-row *ngFor="let data of item.basvurular"  class="information">
+            <ion-img style="width: 18px; height: 20px;" src="assets/checklist.png"></ion-img>
+            <ion-label style="margin-left: 5px; margin-top: 2px;">
+              <p style="font-size: 12px;">{{data}}</p>
+            </ion-label>
+          </ion-row>
+          <!-- <div *ngFor="let ders of item.basvurular" style="margin-left: 5px;">
+            <p style="font-size: 10px;">-{{ders}}</p> -->
+            <!-- <p style="font-size: 10px;">-Programlama Laboratuvarı</p>
+            <p style="font-size: 10px;">-Veritabanı Laboratuvarı</p> -->
+          <!-- </div> -->
+          </ion-grid>
+      </div>
+     </ion-card-content>
+     <div style="margin-bottom: 20px;"></div>
+     <div style="color:black; right: 0px; bottom: 0px; position: absolute;">
+      <ion-button *ngIf="item.durum=='onaylandi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(4, 206, 4);">ONAYLANDI<ion-img style="width: 40%; height: 40%; margin-left: 5px; margin-bottom: 3px;" src="assets/check.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='reddedildi'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: rgb(255, 0, 0);">REDDEDILDI<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/close.png"></ion-img></ion-button>
+          <ion-button *ngIf="item.durum=='beklemede'" (click)="detail(item.basvuruTipi,item.tarih,item.basvurular,item.durum,item.aciklama)" fill="clear" style="color: black;">BEKLEMEDE<ion-img style="width: 40%; height: 40%; margin-left: 5px;" src="assets/clock.png"></ion-img></ion-button>
+    </div>
+ </ion-card>
+
+</div>
+
+</ion-content>

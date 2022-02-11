@@ -1,0 +1,91 @@
+ion-content {
+    // overwrite inline styles
+   
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar 
+    {
+      display: none;
+    }
+    --background:linear-gradient(to right,rgb(233, 239, 255),#f3fae0);
+  }
+  .ustbaslik
+  {
+    background-color:#3bbfb4;
+    width:100%;
+    height:300px;
+    position: absolute;
+    border-bottom-right-radius:50%;
+    align-items: center;
+  }
+  .beyazkare
+  {
+    height:130px;
+    width:130px;
+    background-color:#fcfcfc;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+  }
+  .geri
+  {
+    font-size:30px;
+    left:16px;
+    top:20px;
+    position: absolute;
+  }
+  img
+  {
+    width:90px;
+    position: absolute;
+    bottom:50%;
+    left:50%;
+    transform: translate(-50%,50%);
+  }
+  .isim
+  {
+    width:300px;
+    height:30px;
+    background-color: transparent;
+    margin-left:55px;
+    margin-top:80%;
+    text-align: center;
+    font-size:25px;
+  }
+  .yazi
+  {
+    font-size:25px;
+    color: white;
+    width:100%;
+    margin-top:20px;
+    margin-left:70px;
+  }
+  .buton1
+  {
+    position: absolute;
+    background-color: transparent;
+    width:70%;
+    height:10px;
+    margin-top:4px;
+    margin-left:150px;
+  }
+  .buton2
+  {
+    position: absolute;
+    background-color: transparent;
+    width:70%;
+    height:10px;
+    margin-top:4px;
+    margin-left:150px;
+  }
+  .buton3
+  {
+    position: relative;
+    background-color: transparent;
+    width:70%;
+    height:150px;
+    margin-top:4px;
+    margin-left:150px;
+  }

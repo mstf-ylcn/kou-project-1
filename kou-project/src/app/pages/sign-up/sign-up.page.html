@@ -1,0 +1,200 @@
+<ion-content [fullscreen]="true">
+
+  <img  src="../../assets/wave.svg" alt="">
+
+  <div [class]="content_class">
+
+
+
+
+  <div style="text-align: center;">
+  <img *ngIf="!photoControl" (click)="getCamera()" style="border-radius:50%;"  width="200px" height="200px" src="../../../assets/user2.png" alt="">
+
+  <img *ngIf="photoControl" (click)="getCamera()"  style="border-radius:50%;" width="200px" height="200px" [src]="ppUrl" alt="">
+
+  <ion-fab-button (click)="getCamera()" style="position: absolute;right: 120px;top:230px;--background:#3f9a4f" >
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+ </div>
+
+
+  <div style="margin-top: 40px;">
+    <ion-icon name="person" style="position: absolute;font-size: 32px;z-index: 99;margin-top: 18px;color:#4497506b"></ion-icon>
+    <ion-item   style="margin-left: 30px;--background:transparent;width: 90%;">
+      <ion-label style="font-size: 20px; color:black;" position="floating">Ad-Soyad</ion-label>
+      <ion-input [(ngModel)]="name"  type="email"></ion-input>
+  </ion-item>
+<br>
+
+
+  <ion-icon name="mail" style="position: absolute;font-size: 32px;z-index: 99;margin-top: 18px;color:#4497506b"></ion-icon>
+    <ion-item  style="margin-left: 30px;--background:transparent;width: 90%;">
+        <ion-label   style="font-size: 20px; color:black;" position="floating">E-mail</ion-label>
+        <ion-input  [(ngModel)]="mail" (ionChange)="mailControl()"   type="email"></ion-input>
+    </ion-item>
+<br>
+
+  <ion-icon name="lock-closed" style="position: absolute;font-size: 32px;z-index: 99;margin-top: 18px;color:#4497506b"></ion-icon>
+<ion-item style="margin-left: 30px;--background:transparent;width: 90%;">
+    <ion-label style="font-size: 20px; color:black;" position="floating">Şifre</ion-label>
+    <ion-input  [(ngModel)]="pw"    text="password" [type]="password_type" ></ion-input>
+    <ion-icon style="margin-top: 20px;" [hidden]="hide"    name="eye" slot="end" (click)="show_pw()" ></ion-icon>
+    <ion-icon style="margin-top: 20px;"  [hidden]="!hide"   name="eye-off" slot="end" (click)="show_pw()" ></ion-icon>
+</ion-item>
+
+
+ 
+      <ion-row style="margin-top: 35px;">
+        <ion-col>
+          <ion-button   (click)="next()"  style="--background:#3f9a4f"  expand="block" > İLERİ</ion-button>
+        </ion-col>
+      </ion-row>
+
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div [class]="content_class2">
+
+
+
+  <div style="text-align: center;">
+  <img width="215px" height="215px" src="../../assets/logo.png" alt="">
+ </div>
+
+
+
+  <div>    
+
+<ion-item style="margin-left: 30px;--background:transparent;width: 90%;">
+  <ion-label style="font-size: 20px; color:black;" position="floating">Telefon Numarası</ion-label>
+  <ion-input [(ngModel)]="tel"  (ionChange)="telControl()"   style=" color:black;"  maxlength="10"   text="tel"  ></ion-input>
+</ion-item> 
+
+<ion-item style="margin-left: 30px;--background:transparent;width: 90%;">
+  <ion-label style="font-size: 20px; color:black;" position="floating">Adres</ion-label>
+  <ion-textarea [(ngModel)]="addres"></ion-textarea>
+</ion-item> 
+
+<ion-item style="margin-left: 30px;--background:transparent;width: 90%;">
+  <ion-label style="font-size: 20px; color:black;" position="floating">Kimlik Numarası</ion-label>
+  <ion-input [(ngModel)]="tc"  (ionChange)="tcControl()"  style=" color:black;"   maxlength="11"   text="tel"  ></ion-input>
+</ion-item> 
+<br>
+
+<ion-item style="margin-left: 30px;--background:transparent;width: 90%;">
+  <ion-label style="font-size: 20px; color:black;" >Doğum Tarihi</ion-label>
+  <ion-datetime (ionChange)="changeDate($event)" style="margin: 2px 33% 0 0 ;" placeholder="Seçiniz"   min="1921-02"  max="2021-10"
+displayFormat="DD.MM.YYYY"
+doneText="Tamam"
+pickerFormat="DD MM YYYY"
+cancelText="İptal"
+monthShortNames="Oca, Şub, Mar, Nis, May, Haz, Tem, Ağu, Eyl, Eki, Kas, Ara">
+</ion-datetime>
+</ion-item> 
+<br>
+
+
+  <ion-segment (ionChange)="changeGender($event)" style="margin-left:30px; width: 90%; ">
+    <ion-segment-button style="color:hotpink;" value="kadın" layout="icon-start">
+      <ion-label>Kadın</ion-label>
+      <ion-icon name="female"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button style="color:dodgerblue;" value="erkek" layout="icon-start">
+      <ion-label>Erkek</ion-label>
+      <ion-icon name="male"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+      <ion-row style="margin-top: 35px;">
+        <ion-col>
+
+          <ion-button (click)="next()" style="--background:#3f9a4f"  expand="block">İLERİ</ion-button>
+        </ion-col>
+      </ion-row>  
+  
+
+  
+  </div>
+</div>
+
+
+
+
+<div [class]="content_class3">
+
+
+
+  <div style="text-align: center;">
+    <img width="215px" height="215px" src="../../assets/logo.png" alt="">
+   </div>
+
+  <div>    
+    
+
+<ion-item  style="--background: white; color: rgb(0, 0, 0); margin-left: 30px; font-size: 20px; width: 90%;">
+  <ion-label>Üniversite</ion-label>
+  <ion-select placeholder="Seçiniz"  (ionChange)="selectOkul($event)" style="color: rgb(0, 0, 0);" interface="action-sheet" cancelText="İptal" class="custom-options" multiple="false">
+    <ion-select-option  *ngFor="let universite of universiteler,let i=index" [value]="universite">{{universite}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<br>
+<ion-item  style="--background: white; color: rgb(0, 0, 0); margin-left: 30px; font-size: 20px; width: 90%;">
+  <ion-label>Fakülte</ion-label>
+  <ion-select placeholder="Seçiniz" [(ngModel)]="fakulte" [disabled]="disableFakulte" (ionChange)="selectFakulte($event)"  style="color: rgb(0, 0, 0);" interface="action-sheet" cancelText="İptal" class="custom-options" multiple="false">
+    <ion-select-option *ngFor="let fakulte of fakulteler,let i=index" [value]="fakulte">{{fakulte}}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<br>
+
+<ion-item  style="--background: white; color: rgb(0, 0, 0); margin-left: 30px; font-size: 20px; width: 90%;">
+  <ion-label>Bölüm</ion-label>
+  <ion-select placeholder="Seçiniz" [(ngModel)]="bolum" [disabled]="disableBolum" (ionChange)="selectBolum($event)" style="color: rgb(0, 0, 0);" interface="action-sheet" cancelText="İptal" class="custom-options" multiple="false">
+    <ion-select-option *ngFor="let bolum of bolumler" [value]="bolum" >{{bolum}}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+
+
+<br>
+<ion-item  style="--background: white; color: rgb(0, 0, 0); margin-left: 30px; font-size: 20px; width: 90%;">
+<ion-label>Sınıf</ion-label>
+<ion-select placeholder="Seçiniz" [(ngModel)]="sinif" (ionChange)="selectSinif($event)"  [disabled]="disableSinif" style="color: rgb(0, 0, 0);" interface="action-sheet" cancelText="İptal" class="custom-options" multiple="false">
+  <ion-select-option value="1">1. Sınıf</ion-select-option>
+  <ion-select-option value="2">2. Sınıf</ion-select-option>
+  <ion-select-option value="3">3. Sınıf</ion-select-option>
+  <ion-select-option value="4">4. Sınıf</ion-select-option>
+</ion-select>
+</ion-item>
+<br>
+
+<ion-item *ngIf="guestControl==1" style="margin-left: 30px;--background:transparent;width: 90%;">
+  <ion-label style="font-size: 20px; color:black;" position="floating">Öğrenci No</ion-label>
+  <ion-input [(ngModel)]="ogrNo" (ionChange)="ogrNoControl()" style=" color:black;" maxlength="9"   text="tel"  ></ion-input>
+</ion-item>
+
+
+      <ion-button  (click)="bitir()" style="margin-top:35px; --background:#3f9a4f "  expand="block">Tamamla</ion-button>
+   
+  </div>
+
+</div>
+
+
+
+
+
+</ion-content>

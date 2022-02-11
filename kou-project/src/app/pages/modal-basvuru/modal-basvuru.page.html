@@ -1,0 +1,85 @@
+<ion-header *ngIf="userService.basvuruTipi==0" style="background-color: #5cb85c; height: 40px;">
+  <ion-title style="color: white; text-align: center; font-size: 24px; margin-top: 5px;">Yatay Geçiş Başvurusu</ion-title>
+</ion-header>
+
+<ion-header *ngIf="userService.basvuruTipi==1" style="background-color: #428bca; height: 40px;">
+  <ion-title style="color: white; text-align: center; font-size: 24px; margin-top: 5px;">Yaz Okulu Başvurusu</ion-title>
+</ion-header>
+
+<ion-header *ngIf="userService.basvuruTipi==2" style="background-color: #f0ad4e; height: 40px;">
+  <ion-title style="color: white; text-align: center; font-size: 24px; margin-top: 5px;">DGS  Başvurusu</ion-title>
+</ion-header>
+
+
+<ion-header *ngIf="userService.basvuruTipi==3" style="background-color: #d9534f; height: 40px;">
+  <ion-title style="color: white; text-align: center; font-size: 24px; margin-top: 5px;">ÇAP Başvurusu</ion-title>
+</ion-header>
+
+
+<ion-header *ngIf="userService.basvuruTipi==4" style="background-color: #ad4ed9; height: 40px;">
+  <ion-title style="color: white; text-align: center; font-size: 24px; margin-top: 5px;">Ders intibakı Başvurusu</ion-title>
+</ion-header>
+
+
+<ion-content>
+  <div>
+    <div>
+      <ion-avatar style="margin: 20px auto;">
+        <img [src]= "userService.userData.pp" style="width: 60px; height: 60px;box-shadow: 0px 2px 4px 0px;">
+      </ion-avatar>
+    </div>
+  </div>
+  <div class="list">
+   <ion-grid>
+    <ion-row class="information">
+      <ion-img style="width: 23px; height: 26px;" src="assets/user.png"></ion-img>
+      <ion-label style="font-size: 16px;  margin-left: 5px; margin-top: 8px;">
+        {{userService.userData.name}}
+      </ion-label>
+     </ion-row>
+    <ion-row class="information">
+      <ion-img style="width: 23px; height: 26px;" src="assets/calendar.png"></ion-img>
+      <ion-label style="font-size: 16px;  margin-left: 5px; margin-top: 8px;">
+        {{userService.basvuruTarih}}
+      </ion-label>
+    </ion-row>
+      <ion-row *ngFor="let item of userService.basvuruModal" class="information">
+        <ion-img style="width: 23px; height: 26px; margin-top: 10px;" src="assets/checklist.png"></ion-img>
+        <ion-label *ngIf="item=='[object Object]'" style="font-size: 16px;  margin-left: 5px; margin-top: 8px;">
+          {{item.fakulte}}
+          <p>{{item.bolum}}</p>
+          <p>{{item.ders}}</p>
+
+        </ion-label>
+        <ion-label  *ngIf="item!='[object Object]'" style="font-size: 16px;  margin-left: 5px; margin-top: 16px;">
+          {{item.fakulte}}
+          <span   >{{item}}</span>
+          <p>{{item.bolum}}</p>
+          <p>{{item.ders}}</p>
+
+        </ion-label>
+
+      </ion-row>
+      <!-- <ion-row class="information">
+        <ion-img style="width: 23px; height: 26px;" src="assets/case-study.png"></ion-img>
+        <ion-label style="font-size: 16px;  margin-left: 5px; margin-top: 8px;">
+          {{userService.basvuruTarih}}
+        </ion-label>
+      </ion-row> -->
+    <ion-row class="information">
+      <ion-img style="width: 23px; height: 26px;" src="assets/pencil.png"></ion-img>
+      <ion-label style="font-size: 16px;  margin-left: 5px; margin-top: 8px;">
+        Açıklama:
+      </ion-label>
+    </ion-row>
+  </ion-grid>
+  </div>
+  <div style="display: flex; justify-content: center; position:relative">
+    <ion-card class="aciklama" >
+      <div >
+        <ion-label> {{userService.basvuruAciklama}}</ion-label>
+      </div>
+    </ion-card>
+  </div>
+    
+</ion-content>

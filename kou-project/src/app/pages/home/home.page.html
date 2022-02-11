@@ -1,0 +1,68 @@
+<ion-header style="background: white; color: white;" >
+  <ion-toolbar color="#01774a" style="background-color:#01774a;" > 
+      <ion-buttons slot="start">
+  <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class= "card-page" [fullscreen]="true">
+  
+  
+  <div style="display: flex; justify-content: center;">
+    <ion-card>
+      <img src= "./assets/sv1.svg">
+      <div class = "card-header">Yaz Okulu Başvurusu</div>
+      <div class = "card-date">22/07-30/07</div>
+      <div class = "card-button"> 
+        <ion-button (click)="yazOkulu()" fill= "clear" style="float: right; --color: #428bca;">Başvur</ion-button>
+      </div>
+      <div class = "card-announcements"><ion-button fill= "clear"  (click)="capKilavuz()" style="float: right; color: #74b9e5; font-size: 12px">Yaz Okulu Kılavuzu</ion-button></div>
+    </ion-card>
+  </div>
+    <div style="display: flex; justify-content: center;">
+      <ion-card>
+        <img src= "./assets/sv2.svg">
+        <div class = "card-header">Yatay Geçiş Başvurusu</div>
+        <div class = "card-date">22/07-30/07</div>
+        <div class = "card-button"> 
+          <ion-button (click)="yatayGecis()" fill= "clear" style="float: right; --color: #5cb85c">Başvur</ion-button>
+        </div>
+        <div class = "card-announcements"><ion-button fill= "clear" (click)="yatayGecisKilavuz()"  style="float: right; color: #74b9e5; font-size: 12px">Yatay Geçiş Kılavuzu</ion-button></div>
+      </ion-card>
+    </div>
+      <div style="display: flex; justify-content: center;">
+        <ion-card>
+          <img src= "./assets/sv3.svg">
+          <div class = "card-header">DGS Başvurusu</div>
+          <div class = "card-date">22/07-30/07</div>
+          <div class = "card-button"> 
+            <ion-button (click)="dikeyGecis()" fill= "clear" style="float: right; --color: #f0ad4e">Başvur</ion-button>
+          </div>
+          <div class = "card-announcements"><ion-button fill= "clear"  (click)="dikeyGecisKilavuz()" style="float: right; color: #74b9e5; font-size: 12px">DGS Kılavuzu</ion-button></div>
+        </ion-card>
+      </div>
+        <div style="display: flex; justify-content: center;">
+          <ion-card>
+            <img src= "./assets/sv4.svg">
+            <div class = "card-header">ÇAP Başvurusu</div>
+            <div class = "card-date">22/07-30/07</div>
+            <div class = "card-button"> 
+              <ion-button  (click)="cap()" fill= "clear" style="float: right; --color: #d9534f">Başvur</ion-button>
+            </div>
+            <div class = "card-announcements"><ion-button fill= "clear"   (click)="capKilavuz()" style="float: right; color: #74b9e5; font-size: 12px">ÇAP Kılavuzu</ion-button></div>
+          </ion-card>
+        </div>  
+          <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+            <ion-card>
+              <img src= "./assets/sv5.svg">
+              <div class = "card-header">Ders İntibakı Başvurusu</div>
+              <div class = "card-date">22/07-30/07</div>
+              <div class = "card-button"> 
+                <ion-button (click)="intibak()" fill= "clear" style="float: right; --color: #ad4ed9">Başvur</ion-button>
+              </div>
+              <div class = "card-announcements"><ion-button fill= "clear" (click)="capKilavuz()" style="float: right; color: #74b9e5; font-size: 12px">Ders İntibakı Kılavuzu</ion-button></div>
+            </ion-card>
+          </div>
+  
+</ion-content>

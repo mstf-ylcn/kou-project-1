@@ -1,0 +1,93 @@
+
+<ion-content [fullscreen]="true">
+
+
+  <div *ngIf="!hidePage">
+
+
+  <img  src="../../assets/wave8.svg" alt="">
+
+  <div style="text-align: center;">
+  <img width="215px" height="215px" src="../../assets/logo.png" alt="">
+ </div>
+
+  <div>    
+  <ion-icon name="mail" style="position: absolute;font-size: 32px;z-index: 99;margin-top: 18px;color:#4497506b"></ion-icon>
+    <ion-item style="margin-left: 30px;--background:transparent;width: 90%;">
+        <ion-label style="font-size: 20px;" position="floating">E-mail</ion-label>
+        <ion-input   type="email"></ion-input>
+    </ion-item>
+  <br>
+  
+
+
+
+  <ion-icon name="lock-closed" style="position: absolute;font-size: 32px;z-index: 99;margin-top: 18px;color:#4497506b"></ion-icon>
+<ion-item style="margin-left: 30px;--background:transparent;width: 90%;">
+    <ion-label style="font-size: 20px;" position="floating">Şifre</ion-label>
+    <ion-input    text="password" [type]="password_type" ></ion-input>
+    <ion-icon style="margin-top: 20px;" [hidden]="hide"    name="eye" slot="end" (click)="show_pw()" ></ion-icon>
+    <ion-icon style="margin-top: 20px;"  [hidden]="!hide"   name="eye-off" slot="end" (click)="show_pw()" ></ion-icon>
+</ion-item>
+      <br>
+  <br>
+      <ion-row>
+        <ion-col>
+          <ion-button  style="--background:#3f9a4f" (click)="home()"  expand="block">Giriş Yap</ion-button>
+
+          <ion-label (click)="forgetPw()" style="display: block; margin-top:  25px;text-align-last: right;margin-right: 10px;color: grey;font-size: 18px;"   class="small-text">Şifremi Unuttum</ion-label>
+        </ion-col>
+      </ion-row>  
+  
+
+    
+
+
+    <div  class="login_sign">
+      <ion-grid>
+        <ion-row  >
+          <ion-col align-self-center>
+            <span style="margin-top: 20px;" class="divider line one-line">veya</span>
+            <span  style="font-size: 20px;margin-top: 40px; color: grey;" class="already">Hesabın yok mu ?     
+              <span (click)="singup()"   style="font-size: 20px;color:#3f9a4f">
+              <u >   Kayıt ol.</u>
+            </span> </span>    
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top: 5px;">
+    <ion-icon (click)="basvurular()" style="font-size: 24px;margin-right: 12px;" name="logo-facebook"></ion-icon>
+    <ion-icon (click)="basvuru()" style="font-size: 24px;margin-right: 12px;"  name="logo-google"></ion-icon>
+    <ion-icon (click)="git()" style="font-size: 24px;margin-right: 12px;" name="logo-instagram"></ion-icon>
+    <ion-icon style="font-size: 24px;margin-right: 12px;" name="logo-twitter"></ion-icon>
+    <ion-icon style="font-size: 24px;" name="logo-youtube"></ion-icon>
+ </div>
+</div>
+
+
+
+<div *ngIf="hidePage">
+  <ion-toolbar style="--background: transparent;">
+    <ion-icon (click)="backLogin()" name="close-outline" style="font-size:32px;float: right;margin-right: 15px;margin-top: 10px;"></ion-icon>
+  </ion-toolbar>
+<div style="margin-top: 70%;">
+
+<ion-item style="--background:transparent" lines="full">
+  <ion-label position="floating">E-mail</ion-label>
+  <ion-input (ionInput)="mailData($event)"  text="text"  maxlength="100" >       
+  </ion-input>
+ </ion-item>
+</div>
+
+
+
+<ion-button style="--background:#3f9a4f;margin-top: 30px;"  expand="block" class="buton"  (click)="resetPw()">Şifremi Sıfırla</ion-button>
+
+</div>
+
+
+
+</ion-content>

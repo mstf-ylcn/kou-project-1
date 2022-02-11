@@ -1,0 +1,53 @@
+ion-app{
+    --background: rgb(255, 255, 255);
+  }
+  
+  
+  ion-content{
+    --background: white;
+  
+  }
+  .card-page{
+  
+    ion-card{
+    --background: white;
+  
+      border-radius: 20px;
+      width: 95%;
+      height: 140px;
+      margin-bottom: 0px;
+  
+        .card-header{
+          font-size: 21px;
+          text-align: center;
+          margin-top: 10px;
+          color: black;
+        }
+  
+        .card-date{
+          float: right;
+          bottom: 40px;
+          position: absolute;
+          right: 15px;
+        }
+  
+        .card-announcements{
+          bottom: 0px;
+          left: 15%;
+          position: absolute;
+        }
+  
+        .card-button{
+          float: right;
+          bottom: 0px;
+          position: absolute;
+          right: 10px;
+        }
+  
+        img{
+          width: 70%;
+          position: absolute;
+        }
+      }
+  
+    }

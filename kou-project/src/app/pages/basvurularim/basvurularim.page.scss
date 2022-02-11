@@ -1,0 +1,57 @@
+.header{
+    width: 10px;
+    height: 10px;
+  }
+  
+  .card-page{
+      
+    ion-card{
+       
+      border-radius: 20px;
+      width: 95%;
+      margin-bottom: 0px;
+    
+        .card-header{
+          font-size: 21px;
+          text-align: center;
+          margin-top: 10px;
+          color: black;
+        }
+  
+        .card-date{
+          float: right;
+          bottom: 40px;
+          position: absolute;
+          right: 15px;
+        }
+  
+        .card-announcements{
+          bottom: 0px;
+          left: 15%;
+          position: absolute;
+        }
+        
+        .card-onay{
+          float: right;
+          bottom: 10px;
+          position: absolute;
+          right: 25px;
+        }
+    
+        img{
+          width: 70%;
+          position: absolute;
+        }
+      }
+.list{
+  margin-top: 0px;
+  right: 0px;
+}
+
+.information{
+  margin-top: 5px;
+}
+     
+    }
+    
+  

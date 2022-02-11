@@ -1,0 +1,412 @@
+<ion-header>
+  <ion-toolbar style="--background:#f4f4f4">
+     <ion-icon (click)="geri()" name="close" style="position: absolute;top: 10px;left: 10px;font-size: 28px;" ></ion-icon>
+
+    <div style="text-align: center;margin-top:10px">
+
+      <img src="../../../assets/logo.png" width="64px" height="64px" alt="">
+
+    <ion-title  style="font-size: 20px;color: #3f9a4f;font-family: Verdana, Geneva, Tahoma, sans-serif;" >Yatay Geçiş Başvurusu</ion-title>
+  </div>
+
+    <div class="stepper-wrapper">
+      <div [class]="class1">
+        <div class="step-counter">
+          <ion-icon *ngIf="class1=='stepper-item completed' " name="checkmark" class="icon"></ion-icon>
+          <ion-icon *ngIf="class1!='stepper-item completed' " name="person" class="icon2"></ion-icon>
+        </div>
+        <div class="step-name">Kişisel Bilgiler</div>
+      </div>
+      <div [class]="class2">
+        <div class="step-counter">
+          <ion-icon *ngIf="class2=='stepper-item completed' " name="checkmark" class="icon"></ion-icon>
+          <ion-icon *ngIf="class2!='stepper-item completed' " name="school" class="icon"></ion-icon>
+        </div>
+        <div class="step-name">Okul Bilgileri</div>
+      </div>
+      <div [class]="class3">
+        <div class="step-counter">
+          <ion-icon *ngIf="class3=='stepper-item completed' " name="checkmark" class="icon"></ion-icon>
+          <ion-icon *ngIf="class3!='stepper-item completed' " name="document-text" class="icon"></ion-icon>
+        </div>
+        <div class="step-name">Belgeler</div>
+      </div>
+      <div [class]="class4">
+        <div class="step-counter">
+          <ion-icon *ngIf="class4=='stepper-item completed' " name="checkmark" class="icon"></ion-icon>
+          <ion-icon *ngIf="class4!='stepper-item completed' " name="pencil" class="icon2"></ion-icon>
+        </div>
+        <div class="step-name">Tercihler</div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ 
+  <div [class]="content_class">
+   
+    <!-- Profil Resmi -->
+  <ion-avatar  style="margin: 20px auto;width: 90px; height: 90px;border: 1px solid #ccc;box-shadow: 1px 6px 3px #ccc;">
+    <img [src]="userService.userData.pp">
+  </ion-avatar>
+
+  <ion-item style="--background:transparent;">
+    <ion-icon name="person" style="position: absolute;margin-top: 20px;"></ion-icon>
+    <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">Ad-Soyad</ion-label>
+    <ion-input style="margin-left: 40px;"  [value]="userService.userData.name"  disabled="true" type="text"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-icon name="calendar"></ion-icon>
+    <ion-label style="margin-left: 15px;" >Doğum Tarihi</ion-label>
+    <ion-datetime  disabled="true" style="margin: 2px 33% 0 0 ;" placeholder=""  [value]="userService.userData.dTarih"  min="1921-02" 
+  displayFormat="DD.MM.YYYY"
+  doneText="Tamam"
+  pickerFormat="DD MM YYYY"
+  cancelText="İptal"
+  monthShortNames="Oca, Şub, Mar, Nis, May, Haz, Tem, Ağu, Eyl, Eki, Kas, Ara">
+</ion-datetime>
+  </ion-item>
+
+
+  <ion-item style="--background:transparent;">
+    <ion-icon name="finger-print" style="position: absolute;margin-top: 20px;"></ion-icon>
+    <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">T.C. Kimlik</ion-label>
+    <ion-input style="margin-left: 40px;"  [value]="userService.userData.tc"  disabled="true" type="number"></ion-input>
+  </ion-item>
+  
+
+  <ion-item style="--background:transparent;">
+    <ion-icon name="mail" style="position: absolute;margin-top: 20px;"></ion-icon>
+    <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">E-mail</ion-label>
+    <ion-input style="margin-left: 40px;"   [value]="userService.userData.email"  disabled="true" type="email"></ion-input>
+  </ion-item>
+
+
+<ion-item style="--background:transparent;">
+  <ion-icon name="call" style="position: absolute;margin-top: 20px;"></ion-icon>
+  <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">Tel</ion-label>
+  <ion-input style="margin-left: 40px;"  [value]="userService.userData.tel"  disabled="true" type="email"></ion-input>
+</ion-item>
+ 
+<br>
+<ion-button    style="--background:#3f9a4f;float: right;margin-right: 10px;" (click)="next()" >İleri <ion-icon name="arrow-forward" style="margin-left:5px"></ion-icon></ion-button>
+
+</div>
+
+  
+
+
+
+<div [class]="content_class2">
+
+
+  <ion-item style="--background:transparent;">
+    <img src="../../../assets/sc.png" style="position: absolute;margin-top: 20px;width: 24px; height: 24px;opacity: 0.9;">
+    <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">Okul Adı</ion-label>
+    <ion-input style="margin-left: 40px;"   [value]="userService.userData.okul" disabled="true" type="text"></ion-input>
+  </ion-item>
+
+<ion-item style="--background:transparent;">
+  <img src="../../../assets/sc22.png" style="position: absolute;margin-top: 20px;width: 24px; height: 24px;opacity: 0.6;">
+  <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">Fakülte</ion-label>
+  <ion-input style="margin-left: 40px;"   [value]="userService.userData.fakulte"  disabled="true" type="text"></ion-input>
+</ion-item>
+
+<ion-item style="--background:transparent;">
+  <img src="../../../assets/book.png" style="position: absolute;margin-top: 20px;width: 24px; height: 24px;">
+  <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">Bölüm</ion-label>
+  <ion-input style="margin-left: 40px;"  [value]="userService.userData.bolum"  disabled="true" type="text"></ion-input>
+</ion-item>
+
+<ion-item style="--background:transparent;">
+  <img src="../../../assets/id.png" style="position: absolute;margin-top: 20px;width: 24px; height: 24px;opacity: 0.7;">
+  <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">Okul Numarası</ion-label>
+  <ion-input style="margin-left: 40px;"   [value]="userService.userData.ogrNo"  disabled="true" type="text"></ion-input>
+</ion-item>
+
+<ion-item style="--background:transparent;">
+  <ion-icon name="school" style="position: absolute;margin-top: 20px;"></ion-icon>
+  <ion-label style="font-size: 14px;margin-left: 40px;width: 100%;" position="floating">Not Ortalaması <b style="color:red">*</b> (4 Üzerinden giriniz.Örneğin 2.58) </ion-label>
+  <ion-input [(ngModel)]="notOrt"  (ionChange)="notOrtalamasiBilgisi($event)" style="margin-left: 40px;" maxlength="4" type="tel"></ion-input>
+</ion-item>
+ 
+
+<ion-item style="--background:transparent;">
+  <ion-icon name="library" style="position: absolute;margin-top: 20px;"></ion-icon>
+  <ion-label style="font-size: 14px;margin-left: 40px;width: 100%;" position="floating">Okul Yerleştirme Puanı <b style="color:red">*</b> </ion-label>
+  <ion-input  [(ngModel)]="okulPuan" (ionChange)="okulPuaniBilgisi($event)" style="margin-left: 40px;" maxlength="6" type="tel"></ion-input>
+</ion-item>
+
+
+<br>
+<ion-button style="--background:#3f9a4f;float: left;position: absolute;right: 10px;" (click)="next()">İleri <ion-icon name="arrow-forward" style="margin-left:5px"></ion-icon></ion-button>
+<ion-button style="--border-color:rgb(143, 173, 218);--color:rgb(143, 173, 218);position: absolute;left: 10px;--padding-start:10px" (click)="back()"  fill="outline"><ion-icon name="arrow-back" style="margin-right: 5px;"></ion-icon> Geri </ion-button>
+
+</div>
+
+
+
+
+<div [class]="content_class3">
+
+  
+  <ion-item-sliding *ngFor="let belge of belgeler,let i=index;" [id]="'slidingItem' + i" #slidingItem (click)="slidingItem.close()">
+    <ion-item-options    side="end">
+      <ion-item-option *ngIf="belge.index!=-1" style="--background:#3f9a4f" (click)="previewFile(i)" > <ion-icon name="eye"  slot="icon-only" ></ion-icon></ion-item-option>
+      <ion-item-option *ngIf="belge.index!=-1" style="background:rgba(236, 40, 40, 0.856)"  (click)="deleteFile(i,belge.dosya_Ad)"  > <ion-icon name="trash" slot="icon-only"></ion-icon></ion-item-option>
+    </ion-item-options>
+
+  <ion-item  #item (click)="openItemSlide(slidingItem, item)" >
+    <p style="width: 79%;">{{belge.belge_Ad}} <b style="color:red">*</b> </p>
+    <label *ngIf="belge.index==-1" class="custom-file-upload">
+      <input #a   (change)="onFileSelected($event,i)" type="file"/>
+      <ion-label style="margin-right: 12px;">
+        Ekle     
+      </ion-label>
+      <ion-icon name="cloud-upload" class="upload_icon"></ion-icon>
+
+  </label>
+
+   <ion-spinner *ngIf="belge.index!=-1 && belge.isLoad!=-1"  name="crescent"></ion-spinner> 
+  <label *ngIf="belge.index!=-1">
+    <ion-icon name="chevron-forward" style="font-size: 24px;right: 15px;position: absolute;margin-top: -10px;"></ion-icon>
+  </label>
+  </ion-item>
+
+</ion-item-sliding>
+
+  <!-- <ion-item>
+    <p style="width: 80%;">ÖSYM sınav sonuç belgesi <b style="color:red">*</b> </p>
+    
+    <label class="custom-file-upload">
+      <input type="file"/>
+      Ekle&nbsp;&nbsp;&nbsp;
+  <ion-icon name="cloud-upload" class="upload_icon" ></ion-icon>
+
+  </label>
+
+  </ion-item>
+
+
+  <ion-item>
+    <p style="width: 80%;">ÖSYM yerleştirme belgesi <b style="color:red">*</b> </p>
+    <label class="custom-file-upload">
+      <input type="file"/>
+      Ekle&nbsp;&nbsp;&nbsp;
+      <ion-icon name="cloud-upload" class="upload_icon"></ion-icon>
+
+  </label>
+  </ion-item>
+
+
+  <ion-item>
+    <p style="width: 80%;">Not belgesi (Transkript) <b style="color:red">*</b> </p>
+    <label class="custom-file-upload">
+
+      <input type="file"/>
+      Ekle&nbsp;&nbsp;&nbsp;
+      <ion-icon name="cloud-upload" class="upload_icon"></ion-icon>
+
+  </label>
+  </ion-item>
+
+
+
+  <ion-item>
+    <p style="width: 80%;">Disiplin cezası almadığını gösterir belge <b style="color:red">*</b> </p>
+    <label class="custom-file-upload">
+
+      <input type="file"/>
+      Ekle&nbsp;&nbsp;&nbsp;
+      <ion-icon name="cloud-upload" class="upload_icon"></ion-icon>
+
+  </label>
+  </ion-item>
+
+
+
+  <ion-item>
+    <p style="width: 80%;"> Yabancı Dil Hazırlık veya Yeterlik belge <b style="color:red">*</b> </p>
+    <label class="custom-file-upload">
+
+      <input type="file"/>
+      Ekle&nbsp;&nbsp;&nbsp;
+      <ion-icon name="cloud-upload" class="upload_icon"></ion-icon>
+
+  </label>
+  </ion-item>
+
+
+
+  <ion-item>
+    <p style="width: 80%;">Öğrenci Belgesi <b style="color:red">*</b> </p>
+    <label class="custom-file-upload">
+
+      <input type="file"/>
+      Ekle&nbsp;&nbsp;&nbsp;
+      <ion-icon name="cloud-upload" class="upload_icon"></ion-icon>
+
+  </label>
+  </ion-item>
+
+
+  <ion-item>
+    <p style="width: 80%;" >Yabancı Dil Hazırlık veya Yeterlik besd<b style="color:red">*</b> </p>
+    <label class="custom-file-upload">
+
+      <input type="file"/>
+      Ekle&nbsp;&nbsp;&nbsp;
+      <ion-icon name="cloud-upload" class="upload_icon"></ion-icon>
+
+  </label>
+  </ion-item>
+ -->
+
+
+
+
+  
+
+
+    <!-- <input type="file">
+  <ion-item style="--background:transparent;">
+    <img src="../../../assets/id.png" style="position: absolute;margin-top: 20px;width: 24px; height: 24px;">
+    <ion-label style="font-size: 20px;margin-left: 40px;" position="floating">Okul Numarası</ion-label>
+    <ion-input style="margin-left: 40px;width: 20%;"    disabled="true" type="number"></ion-input>
+    <input type="file">
+  </ion-item> -->
+
+ 
+<br>
+<ion-button  style="--background:#3f9a4f;float: left;position: absolute;right: 10px;" (click)="next()">İleri <ion-icon name="arrow-forward" style="margin-left:5px"></ion-icon></ion-button>
+<ion-button  style="--border-color:rgb(143, 173, 218);--color:rgb(143, 173, 218);position: absolute;left: 10px;--padding-start:10px" (click)="back()"  fill="outline"><ion-icon name="arrow-back" style="margin-right: 5px;"></ion-icon> Geri </ion-button>
+<br>
+</div>
+
+
+
+
+
+<div [class]="content_class4">
+ 
+ 
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Tercih Yapınız.
+      </ion-label>
+    </ion-list-header>
+  
+    <ion-item>
+      <ion-label>Fakülteler</ion-label>
+      <ion-select (ionChange)="selectFakulte($event)"  cancelText="İptal" interface="action-sheet" placeholder="Seçiniz">
+        <ion-select-option  *ngFor="let fakulte of fakulteler,let i=index" [value]="fakulte">{{fakulte}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Bölümler</ion-label>
+      <ion-select [(ngModel)]="bolum" [disabled]="disableBolum"  (ionChange)="selectBolum($event)"  cancelText="İptal" interface="action-sheet" placeholder="Seçiniz">
+        <ion-select-option *ngFor="let bolum of bolumler" [value]="bolum">{{bolum}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+ <br>
+  <ion-button  style="--background:#3f9a86;float: right;margin-right: 10px;" (click)="addItem()">Ekle <ion-icon name="add-circle-outline" style="margin-left:5px"></ion-icon></ion-button>
+
+<br>
+<br>
+<br>
+
+<ion-card *ngFor="let tercih of tercihler,let i=index">
+  <ion-card-header>
+    <ion-card-title>{{tercih.fakulte}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+   {{tercih.bolum}}
+  </ion-card-content>
+  <ion-button  style="--background:#c44444;position: absolute;right: 0;top: 25px;" (click)="deleteItem(i,tercih.bolum,tercih.fakulte)">Sil <ion-icon name="close-outline" style="margin-left:5px"></ion-icon></ion-button>
+</ion-card> 
+
+
+
+
+ 
+  
+<div style="margin-bottom: 5px;">
+
+  <ion-button  style="--background:#3f9a4f;float: right;right: 10px;" (click)="bitir()">İleri <ion-icon name="checkmark" style="margin-left:5px"></ion-icon></ion-button>
+  <ion-button  style="--border-color:rgb(143, 173, 218);--color:rgb(143, 173, 218);left: 10px;--padding-start:10px" (click)="back()"  fill="outline"><ion-icon name="arrow-back" style="margin-right: 5px;"></ion-icon> Geri </ion-button>
+</div>
+
+
+  <!-- <ion-button  style="--background:#3f9a4f;float: left;position: absolute;right: 10px;" (click)="next()">Başvuruyu Tamamla <ion-icon name="checkmark" style="margin-left:5px"></ion-icon></ion-button> -->
+  <!-- <ion-button  style="--border-color:rgb(143, 173, 218);--color:rgb(143, 173, 218);position: absolute;left: 10px;--padding-start:10px" (click)="back()"  fill="outline"><ion-icon name="arrow-back" style="margin-right: 5px;"></ion-icon> Geri </ion-button> -->
+
+</div>
+
+
+
+<div [class]="content_class5">
+
+  <canvas style="width: 100%;height: 200px;border:2px solid black;"
+  #canvas
+  (touchstart)="start($event)"
+  (touchmove)="move($event)" 
+></canvas>
+
+<ion-button  color="dark" (click)="clearCanvas()" >
+  Sil 
+  <ion-icon name="trash"></ion-icon>
+   
+</ion-button>
+
+<ion-button  style="float: right;" color="dark" (click)="imzala()" >
+  imzala
+  <ion-icon name="checkmark"></ion-icon>
+</ion-button>
+
+
+
+
+</div>
+
+
+<div [class]="content_class6">
+
+  <div style="margin-top: 20%;">
+
+ <div class="gif_alert_css">
+  <div class="success-checkmark">
+    <div class="check-icon">
+      <span class="icon-line line-tip"></span>
+      <span class="icon-line line-long"></span>
+      <div class="icon-circle"></div>
+      <div class="icon-fix"></div>
+    </div>
+  </div>
+ </div>
+</div>
+
+<div style="text-align: center;font-size: 18px;font-weight: bold;">
+  Başvurunuz Alınmıştır.
+</div>
+ <br>
+ <div *ngIf="userService.yatay!=1" style="text-align: center;">
+<ion-button (click)="previewPdf()" style="--background:#3f9a4f;width:90%;" >Başvuru Belgesi </ion-button>
+</div>
+<div *ngIf="userService.yatay==1" style="text-align: center;">
+  <ion-button (click)="previewPdf2()" style="--background:#3f9a4f;width:90%;" >Başvuru Belgesi </ion-button>
+</div>
+</div>
+
+
+
+
+
+</ion-content>

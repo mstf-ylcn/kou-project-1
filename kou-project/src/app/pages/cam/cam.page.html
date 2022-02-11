@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>İmza at</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<!-- <ion-button (click)="getCamera()" ></ion-button> -->
+
+
+
+
+
+
+<canvas style="width: 100%;height: 200px;border:2px solid black;"
+  #canvas
+  (touchstart)="start($event)"
+  (touchmove)="move($event)" 
+></canvas>
+
+<ion-button  color="dark" (click)="clearCanvas()" >
+    <ion-icon name="trash"></ion-icon>
+</ion-button>
+
+<ion-button  style="float: right;" color="dark"   (click)="save()" >
+  <ion-icon name="checkmark"></ion-icon>
+</ion-button>
+
+
+
+<img [src]="image" alt="">
+
+</ion-content>

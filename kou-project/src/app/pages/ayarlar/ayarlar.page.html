@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="ustbaslik">
+  <div class="geri">
+    <ion-icon name="arrow-back-outline" (click)="back()" color="light"></ion-icon>
+  </div>
+  <div class="yazi">Bilgilerimi Güncelle</div>
+  <div class="beyazkare">
+    <img style="border-radius: 50%;width: 130px;height: 130px;" [src]="userService.userData.pp">
+  </div>
+  </div>
+  <div class="isim">
+   Merhaba,{{_name}}
+  <br><br><br>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating" >Telefon Numarası</ion-label>
+    <ion-input placeholder={{_tel}} [(ngModel)]="_tel"></ion-input>
+  </ion-item>
+  <div class="buton1" ><ion-button (click)="Edit1()"color="danger" >Değiştir</ion-button></div>
+  <br><br><br>
+  <ion-item >
+    <ion-label position="floating">E-Mail Adresi</ion-label>
+    <ion-input placeholder={{_email}} [(ngModel)]="_email"></ion-input>
+  </ion-item>
+  <div class="buton2"><ion-button (click)="Edit2()" color="danger">Değiştir</ion-button></div>
+  <br><br><br>
+  <ion-item >
+    <ion-label position="floating">Adres</ion-label>
+    <ion-input placeholder={{_adres}} [(ngModel)]="_adres"></ion-input>
+  </ion-item>
+  <div class="buton3"><ion-button (click)="Edit()" color="danger">Değiştir</ion-button></div>
+
+  <ion-content>
+  
+  
+  
+  
+  

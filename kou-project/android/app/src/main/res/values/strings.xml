@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">kou</string>
+    <string name="title_activity_main">kou</string>
+    <string name="package_name">io.kou.starter</string>
+    <string name="custom_url_scheme">io.kou.starter</string>
+</resources>
