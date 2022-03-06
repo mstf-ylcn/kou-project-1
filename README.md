@@ -57,14 +57,13 @@ npm install @capacitor/filesystem
 
   <img src="https://user-images.githubusercontent.com/83976212/153603034-5d615a00-59f9-4480-8be7-6a31199b671d.jpg"  width="230" />
 
-  <img src="https://user-images.githubusercontent.com/83976212/153603050-8b3547c3-2991-4418-abce-94c5c34dfd49.jpg"  width="230" />
+  <img src="https://user-images.githubusercontent.com/83976212/156924729-e08b8fbe-c4be-4ca0-9ef1-84cf5e8d2bab.jpg"  width="230" />
+ 
+ <img src="https://user-images.githubusercontent.com/83976212/156924758-7d9d3848-87ad-4bd6-8139-b4bd93bf1394.jpg"  width="230" />
  
   <img src="https://user-images.githubusercontent.com/83976212/153603027-f1e7897c-8f54-4bea-9e13-e3a62623216c.jpg"  width="230" />
 </p>
 
-
-
-
-
+ 
 
  
